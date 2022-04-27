@@ -34,42 +34,33 @@ const parseAllData = async () => {
     } else return null;
   });
 
-  const allDataHeightLC = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
-  const allDataAgeLC = allDataSets.map((entry) => [...entry.dataAgeLC]); // only retrun all dataAgeLC entries
+  const dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
 
-  console.table(allDataHeightLC);
+  console.table(dataset);
 
   // width and height
-  const w = 500;
-  const h = 500;
-  const padding = 30;
+  const w = 1000;
+  const h = 800;
+  const padding = 100;
 
   // create scale functions
+  const xExtent = d3.extent(dataset.map((d) => Math.ceil(d[0])));
+  const yExtent = d3.extent(dataset.map((d) => Math.ceil(d[1])));
+
   const xScale = d3
     .scaleLinear()
-    .domain([
-      d3.min(allDataHeightLC, (d) => {
-        return d[0];
-      }),
-      d3.max(allDataHeightLC, (d) => {
-        return d[0];
-      }),
-    ])
-    .range([padding, w - padding * 2]);
+    .domain(xExtent)
+    .range([padding, w - padding])
+    .nice();
 
   const yScale = d3
     .scaleLinear()
-    .domain([
-      0,
-      d3.max(allDataHeightLC, (d) => {
-        return d[1];
-      }),
-    ])
-    .range([h - padding, padding * 2]);
+    .domain(yExtent)
+    .range([h - padding, padding])
+    .nice();
 
-  console.log(maxY);
   // define X axis
-  const xAxis = d3.axisBottom(xScale).ticks(5);
+  const xAxis = d3.axisBottom(xScale).ticks(10);
 
   // define Y axis
   const yAxis = d3.axisLeft(yScale).ticks(10);
@@ -81,23 +72,13 @@ const parseAllData = async () => {
     .attr("width", w)
     .attr("height", h);
 
-  // // define clipping path
-  // svg
-  //   .append("clipPath") // make a new clipPath
-  //   .attr("id", "chart-area") // assign an ID
-  //   .append("rect") // within the clipPath, create a new rect
-  //   .attr("x", padding) // set rect's position and size...
-  //   .attr("y", padding)
-  //   .attr("width", w - padding * 3)
-  //   .attr("height", h - padding * 2);
-
   // create circles
   svg
     .append("g") // create new g
     .attr("id", "circles") // assign ID of 'circles'
     .attr("clip-path", "url(#chart-area)") // add reference to clipPath
     .selectAll("circle")
-    .data(allDataHeightLC)
+    .data(dataset)
     .enter()
     .append("circle")
     .attr("cx", (d) => {
@@ -121,6 +102,60 @@ const parseAllData = async () => {
     .attr("class", "y axis")
     .attr("transform", "translate(" + padding + ",0)")
     .call(yAxis);
+
+  // on click, update with new data
+  d3.select("button").on("click", () => {
+    const dataset = allDataSets.map((entry) => [...entry.dataAgeLC]); // only return dataAgeLC entries
+
+    /// create scale functions
+    const xExtent = d3.extent(dataset.map((d) => Math.ceil(d[0])));
+    const yExtent = d3.extent(dataset.map((d) => Math.ceil(d[1])));
+
+    const xScale = d3
+      .scaleLinear()
+      .domain(xExtent)
+      .range([padding, w - padding])
+      .nice();
+
+    const yScale = d3
+      .scaleLinear()
+      .domain(yExtent)
+      .range([h - padding, padding])
+      .nice();
+
+    // define X axis
+    const xAxis = d3.axisBottom(xScale).ticks(10);
+
+    // define Y axis
+    const yAxis = d3.axisLeft(yScale).ticks(10);
+
+    // update all circles
+    svg
+      .selectAll("circle")
+      .data(dataset)
+      .transition() // <-- transition #1
+      .duration(1000)
+      .on("start", function () {
+        // <-- executes at start of transition
+        d3.select(this).attr("fill", "magenta").attr("r", 3);
+      })
+      .attr("cx", (d) => {
+        return xScale(d[0]);
+      })
+      .attr("cy", (d) => {
+        return yScale(d[1]);
+      })
+      .transition() // <-- transition #2
+      .duration(1000)
+      .attr("fill", "black")
+      .attr("r", 2);
+
+    // update x-axis
+    svg.select(".x.axis").transition().duration(1000).call(xAxis);
+
+    // update y-axis
+    svg.select(".y.axis").transition().duration(1000).call(yAxis);
+  });
 };
 
 parseAllData();
