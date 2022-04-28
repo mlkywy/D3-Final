@@ -50,9 +50,6 @@ const parseAllData = async () => {
 
   // create circles
   svg
-    .append("g") // create new g
-    .attr("id", "circles") // assign ID of 'circles'
-    .attr("clip-path", "url(#chart-area)") // add reference to clipPath
     .selectAll("circle")
     .data(dataset)
     .enter()
@@ -68,7 +65,21 @@ const parseAllData = async () => {
     .attr("stroke", (d) => {
       return "rgb(200, 20, " + d[1] * 15 + ")";
     })
-    .attr("fill", "none"); // set the fill colour
+    .attr("fill", "transparent") // set the fill colour
+    .on("mouseover", function (d) {
+      d3.select("#tooltip")
+        .style("left", d3.event.pageX + 15 + "px")
+        .style("top", d3.event.pageY - 28 + "px")
+        .select("#value1")
+        .text(`${d[0]}, \r\n ${d[1]}`);
+
+      // show the tooltip
+      d3.select("#tooltip").classed("hidden", false);
+    })
+    .on("mouseout", function () {
+      // hide the tooltip
+      d3.select("#tooltip").classed("hidden", true);
+    });
 
   // create X axis
   svg
