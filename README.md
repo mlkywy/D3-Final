@@ -3,7 +3,7 @@
 https://alshei.github.io/D3-Final/index.html
 
 
-N328 Visualizing Information Final
+NEWM-N 328 Visualizing Information
 
 ## Deliverables
 * 1 page for the live and interactive visualization.
