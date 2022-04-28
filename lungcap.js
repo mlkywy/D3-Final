@@ -10,13 +10,16 @@ const parseAllData = async () => {
   let dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
 
   // width and height
-  const w = 1000;
-  const h = 800;
+  const w = 900;
+  const h = 700;
   const padding = 100;
 
   // create scale functions
   const xExtent = d3.extent(dataset.map((d) => Math.ceil(d[0])));
   const yExtent = d3.extent(dataset.map((d) => Math.ceil(d[1])));
+
+  const xAxisLabel = "height (inches)";
+  const yAxisLabel = "lung capacity (cc)";
 
   const xScale = d3
     .scaleLinear()
@@ -69,15 +72,28 @@ const parseAllData = async () => {
   svg
     .append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(0," + (h - padding) + ")")
-    .call(xAxis);
+    .attr("transform", `translate(0, ${h - padding})`)
+    .call(xAxis)
+    .append("text")
+    .attr("fill", "black")
+    .attr("x", w / 2)
+    .attr("y", 50)
+    .attr("text-anchor", "middle")
+    .text(xAxisLabel);
 
   // create Y axis
   svg
     .append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(" + padding + ",0)")
-    .call(yAxis);
+    .call(yAxis)
+    .append("text")
+    .attr("fill", "black")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -(h / 2))
+    .attr("y", -50)
+    .attr("text-anchor", "middle")
+    .text(yAxisLabel);
 
   // on click, update with new data
   d3.select("#one").on("click", () => {
@@ -104,6 +120,8 @@ const parseAllData = async () => {
 
     // define Y axis
     const yAxis = d3.axisLeft(yScale).ticks(10);
+
+    const xAxisLabel = "age (years)";
 
     // update all circles
     svg
@@ -142,6 +160,8 @@ const parseAllData = async () => {
     /// create scale functions
     const xExtent = d3.extent(dataset.map((d) => Math.ceil(d[0])));
     const yExtent = d3.extent(dataset.map((d) => Math.ceil(d[1])));
+
+    const xAxisLabel = "height (inches)";
 
     const xScale = d3
       .scaleLinear()
