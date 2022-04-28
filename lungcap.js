@@ -7,6 +7,8 @@ const parseAllData = async () => {
     } else return null;
   });
 
+  d3.select("#height").classed("current", true);
+
   let dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
 
   // labels
@@ -123,7 +125,10 @@ const parseAllData = async () => {
     .text(yAxisLabel);
 
   // on click, update with new data
-  d3.select("#one").on("click", () => {
+  d3.select("#age").on("click", () => {
+    d3.select("#height").classed("current", false);
+    d3.select("#age").classed("current", true);
+
     dataset = allDataSets.map((entry) => [...entry.dataAgeLC]); // only return dataHeightLC entries
 
     /// create scale functions
@@ -182,7 +187,10 @@ const parseAllData = async () => {
   });
 
   // on click, update with new data
-  d3.select("#two").on("click", () => {
+  d3.select("#height").on("click", () => {
+    d3.select("#height").classed("current", true);
+    d3.select("#age").classed("current", false);
+
     dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
 
     /// create scale functions

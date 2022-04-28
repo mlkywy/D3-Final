@@ -38,7 +38,7 @@ body {
   text-align: center;
 }
 
-.button {
+button {
   background: #c91c71;
   color: #fff;
   border: none;
@@ -55,10 +55,16 @@ body {
   align-items: center;
 }
 
+button.current {
+  background: #fff;
+  color: #c91c71;
+}
+
 button:hover {
   background: #fff;
   color: #c91c71;
 }
+
 button:before,
 button:after {
   content: "";
