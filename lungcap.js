@@ -1,6 +1,6 @@
 const parseAllData = async () => {
   const allDataSets = await d3.csv("./lungcap.csv", (d) => {
-    if (d.smoke === "yes") {
+    if (d.smoke === "no") {
       const dataHeightLC = [d.height, d.lungcap];
       const dataAgeLC = [d.age, d.lungcap];
       return { dataHeightLC, dataAgeLC };
