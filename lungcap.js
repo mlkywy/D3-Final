@@ -39,11 +39,11 @@ const parseAllData = async () => {
   const xAxis = d3.axisBottom(xScale).ticks(10);
 
   // define Y axis
-  const yAxis = d3.axisLeft(yScale).ticks(10);
+  const yAxis = d3.axisLeft(yScale).ticks(5);
 
   // create SVG element
   const svg = d3
-    .select("body")
+    .select("#map")
     .append("svg")
     .attr("width", w)
     .attr("height", h);
@@ -146,7 +146,7 @@ const parseAllData = async () => {
     const xAxis = d3.axisBottom(xScale).ticks(10);
 
     // define Y axis
-    const yAxis = d3.axisLeft(yScale).ticks(10);
+    const yAxis = d3.axisLeft(yScale).ticks(5);
 
     // update all circles
     svg
@@ -205,7 +205,7 @@ const parseAllData = async () => {
     const xAxis = d3.axisBottom(xScale).ticks(10);
 
     // define Y axis
-    const yAxis = d3.axisLeft(yScale).ticks(10);
+    const yAxis = d3.axisLeft(yScale).ticks(5);
 
     // update all circles
     svg

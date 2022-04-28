@@ -4,12 +4,88 @@ body {
   height: 100%;
 }
 
+#map {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header {
+  width: auto;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttons {
+  width: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: "georgia";
+  font-weight: bold;
+  margin-top: 40px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.button {
+  background: #c91c71;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+button:hover {
+  background: #fff;
+  color: #c91c71;
+}
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #c91c71;
+  transition: 400ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
 #tooltip {
   position: absolute;
   width: auto;
   height: auto;
   padding: 12px;
-  background-color: white;
+  background-color: #ffffff;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -28,4 +104,22 @@ body {
   font-family: sans-serif;
   font-size: 12px;
   line-height: 20px;
+}
+
+a {
+  font-family: "georgia";
+  font-weight: bold;
+  font-size: 16px;
+  color: #cb166c;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: #d44286;
+}
+
+/* selected link */
+a:active {
+  color: #d44286;
 }
