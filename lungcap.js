@@ -48,8 +48,21 @@ const parseAllData = async () => {
     .attr("width", w)
     .attr("height", h);
 
+  // define clipping path
+  svg
+    .append("clipPath") // make a new clipPath
+    .attr("id", "chart-area") // assign an ID
+    .append("rect") // within the clipPath, create a new rect
+    .attr("x", padding) // set rect's position and size...
+    .attr("y", padding)
+    .attr("width", w - padding * 2)
+    .attr("height", h - padding * 2);
+
   // create circles
   svg
+    .append("g") // create new g
+    .attr("id", "circles") // assign ID of 'circles'
+    .attr("clip-path", "url(#chart-area)") // add reference to clipPath
     .selectAll("circle")
     .data(dataset)
     .enter()
@@ -65,7 +78,7 @@ const parseAllData = async () => {
     .attr("stroke", (d) => {
       return "rgb(200, 20, " + d[1] * 15 + ")";
     })
-    .attr("fill", "transparent") // set the fill colour
+    .attr("fill", "transparent") // set the fill color
     .on("mouseover", function (d) {
       d3.select("#tooltip")
         .style("left", d3.event.pageX + 15 + "px")
