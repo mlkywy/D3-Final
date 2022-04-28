@@ -131,6 +131,8 @@ const createChart = async () => {
     d3.select("#height").classed("current", false);
     d3.select("#age").classed("current", true);
 
+    d3.select("#title").text("Age vs Lung Capacity");
+
     dataset = allDataSets.map((entry) => [...entry.dataAgeLC]); // only return dataHeightLC entries
 
     /// create scale functions
@@ -193,6 +195,8 @@ const createChart = async () => {
     // make height button appear active
     d3.select("#height").classed("current", true);
     d3.select("#age").classed("current", false);
+
+    d3.select("#title").text("Height vs Lung Capacity");
 
     dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
 
