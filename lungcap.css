@@ -127,17 +127,15 @@ a:active {
 }
 
 .main {
-  margin-left: 12rem;
-  margin-right: 12rem;
-  width: auto;
+  width: 75%;
+  margin: auto;
   height: auto;
   display: flex;
   justify-content: space-between;
 }
 
 .column {
-  float: left;
-  width: 50%;
+  width: auto;
   padding: 30px;
 }
 
