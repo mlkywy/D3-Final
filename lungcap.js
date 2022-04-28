@@ -9,6 +9,11 @@ const parseAllData = async () => {
 
   let dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
 
+  // labels
+  const xAxisLabelHeight = "height (inches)";
+  const xAxisLabelAge = "age (years)";
+  const yAxisLabel = "lung capacity (cc)";
+
   // width and height
   const w = 900;
   const h = 700;
@@ -17,9 +22,6 @@ const parseAllData = async () => {
   // create scale functions
   const xExtent = d3.extent(dataset.map((d) => Math.ceil(d[0])));
   const yExtent = d3.extent(dataset.map((d) => Math.ceil(d[1])));
-
-  const xAxisLabel = "height (inches)";
-  const yAxisLabel = "lung capacity (cc)";
 
   const xScale = d3
     .scaleLinear()
@@ -75,11 +77,12 @@ const parseAllData = async () => {
     .attr("transform", `translate(0, ${h - padding})`)
     .call(xAxis)
     .append("text")
+    .attr("class", "x text")
     .attr("fill", "black")
     .attr("x", w / 2)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .text(xAxisLabel);
+    .text(xAxisLabelHeight);
 
   // create Y axis
   svg
@@ -121,8 +124,6 @@ const parseAllData = async () => {
     // define Y axis
     const yAxis = d3.axisLeft(yScale).ticks(10);
 
-    const xAxisLabel = "age (years)";
-
     // update all circles
     svg
       .selectAll("circle")
@@ -149,6 +150,9 @@ const parseAllData = async () => {
     // update x-axis
     svg.select(".x.axis").transition().duration(1000).call(xAxis);
 
+    // update x-axis text
+    svg.select(".x.text").transition().duration(1000).text(xAxisLabelAge);
+
     // update y-axis
     svg.select(".y.axis").transition().duration(1000).call(yAxis);
   });
@@ -160,8 +164,6 @@ const parseAllData = async () => {
     /// create scale functions
     const xExtent = d3.extent(dataset.map((d) => Math.ceil(d[0])));
     const yExtent = d3.extent(dataset.map((d) => Math.ceil(d[1])));
-
-    const xAxisLabel = "height (inches)";
 
     const xScale = d3
       .scaleLinear()
@@ -206,6 +208,9 @@ const parseAllData = async () => {
 
     // update x-axis
     svg.select(".x.axis").transition().duration(1000).call(xAxis);
+
+    // update x-axis text
+    svg.select(".x.text").transition().duration(1000).text(xAxisLabelHeight);
 
     // update y-axis
     svg.select(".y.axis").transition().duration(1000).call(yAxis);
