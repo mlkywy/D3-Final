@@ -1,4 +1,4 @@
-const parseAllData = async () => {
+const createChart = async () => {
   const allDataSets = await d3.csv("./lungcap.csv", (d) => {
     if (d.smoke === "no") {
       const dataHeightLC = [d.height, d.lungcap];
@@ -7,6 +7,7 @@ const parseAllData = async () => {
     } else return null;
   });
 
+  // make height button appear active
   d3.select("#height").classed("current", true);
 
   let dataset = allDataSets.map((entry) => [...entry.dataHeightLC]); // only return dataHeightLC entries
@@ -126,6 +127,7 @@ const parseAllData = async () => {
 
   // on click, update with new data
   d3.select("#age").on("click", () => {
+    // make age button appear active
     d3.select("#height").classed("current", false);
     d3.select("#age").classed("current", true);
 
@@ -188,6 +190,7 @@ const parseAllData = async () => {
 
   // on click, update with new data
   d3.select("#height").on("click", () => {
+    // make height button appear active
     d3.select("#height").classed("current", true);
     d3.select("#age").classed("current", false);
 
@@ -249,4 +252,4 @@ const parseAllData = async () => {
   });
 };
 
-parseAllData();
+createChart();
