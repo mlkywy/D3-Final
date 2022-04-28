@@ -15,7 +15,7 @@ const parseAllData = async () => {
   const yAxisLabel = "lung capacity (cc)";
 
   // width and height
-  const w = 900;
+  const w = 1200;
   const h = 700;
   const padding = 100;
 
