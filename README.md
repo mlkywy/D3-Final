@@ -2,5 +2,6 @@
 
 https://alshei.github.io/D3-Final/index.html
 
-![1](https://user-images.githubusercontent.com/91434717/165692802-56b4773f-7f66-4fcd-94f2-f77783ddb0af.png)
-![2](https://user-images.githubusercontent.com/91434717/165692810-bd1ee454-9638-4a31-865b-5bcfc3389e18.png)
+
+![1](https://user-images.githubusercontent.com/91434717/165860753-d10835cc-8a21-4b26-85d8-30a543132b5c.png)
+![2](https://user-images.githubusercontent.com/91434717/165860757-b9d6bcf3-88f8-411f-b445-2405ee2798b5.png)
