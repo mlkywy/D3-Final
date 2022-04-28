@@ -58,7 +58,12 @@ const parseAllData = async () => {
     .attr("cy", (d) => {
       return yScale(d[1]);
     })
-    .attr("r", 2);
+    .attr("r", 5)
+    .attr("stroke-width", 2) // set the stroke width
+    .attr("stroke", (d) => {
+      return "rgb(200, 20, " + d[1] * 15 + ")";
+    })
+    .attr("fill", "none"); // set the fill colour
 
   // create X axis
   svg
@@ -108,7 +113,7 @@ const parseAllData = async () => {
       .duration(1000)
       .on("start", function () {
         // <-- executes at start of transition
-        d3.select(this).attr("fill", "magenta").attr("r", 3);
+        d3.select(this).attr("stroke", "brown").attr("r", 4);
       })
       .attr("cx", (d) => {
         return xScale(d[0]);
@@ -118,8 +123,10 @@ const parseAllData = async () => {
       })
       .transition() // <-- transition #2
       .duration(1000)
-      .attr("fill", "black")
-      .attr("r", 2);
+      .attr("stroke", (d) => {
+        return "rgb(200, 20, " + d[1] * 15 + ")";
+      })
+      .attr("r", 5);
 
     // update x-axis
     svg.select(".x.axis").transition().duration(1000).call(xAxis);
@@ -162,7 +169,7 @@ const parseAllData = async () => {
       .duration(1000)
       .on("start", function () {
         // <-- executes at start of transition
-        d3.select(this).attr("fill", "magenta").attr("r", 3);
+        d3.select(this).attr("stroke", "brown").attr("r", 4);
       })
       .attr("cx", (d) => {
         return xScale(d[0]);
@@ -172,8 +179,10 @@ const parseAllData = async () => {
       })
       .transition() // <-- transition #2
       .duration(1000)
-      .attr("fill", "black")
-      .attr("r", 2);
+      .attr("stroke", (d) => {
+        return "rgb(200, 20, " + d[1] * 15 + ")";
+      })
+      .attr("r", 5);
 
     // update x-axis
     svg.select(".x.axis").transition().duration(1000).call(xAxis);
