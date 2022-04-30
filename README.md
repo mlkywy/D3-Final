@@ -14,5 +14,5 @@ NEWM-N 328 Visualizing Information
 * A 2-4 minutes YouTube video showing the use of the visualization with narration, embedded in the documentation page.
 
 ## Screenshots
-![1](https://user-images.githubusercontent.com/91434717/165862439-eace071c-4696-4159-bea0-9ce21db5013c.png)
-![2](https://user-images.githubusercontent.com/91434717/165862442-63cf4211-280d-41ab-bb96-742a94b37140.png)
+![1](https://user-images.githubusercontent.com/91434717/166125767-3803c828-c440-4f1e-9959-718d32d07e20.png)
+![2](https://user-images.githubusercontent.com/91434717/166125771-6246f86c-859f-408a-b4fb-56236fb856f8.png)
