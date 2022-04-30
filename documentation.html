@@ -20,36 +20,76 @@
     <div class="main">
         <div class="column">
             <h1>dataset</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                id est laborum.</p>
+            <p>The dataset for this project can be found <a
+                    href="https://www.kaggle.com/datasets/radhakrishna4/lung-capacity" target="_blank"
+                    rel="noopener noreferrer">here</a>. It includes six attributes: lung capacity, age, height, smoke,
+                gender, and caesarean. More specifically, these refer to the closing capacity of an individual, their
+                age, their height, whether or not the individual smokes, their gender, and whether or not the individual
+                was born from a caesarean. The age group of the individuals range between 3 and 19, and their heights
+                range between 45 to 85 inches. </p>
 
             <h1>design process</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                id est laborum.</p>
+            <p>As I learned how to use D3.js from the book, <i>Interactive Data Visualization for the Web</i> by Scott
+                Murray, I created practice visualizations that are contained within the practice folder of this project.
+                They consisted primarily of bar charts and scatterplots and I gained an understanding of how to use
+                multiple datasets, dynamics datasets, animations, tooltips, and more. </p>
+
+            <p>Following this practice, my design process for the lung capacity dataset started with putting the data
+                into Tableau and comparing different attributes to one another. Age and height both appeared to have
+                strong correlation with lung closing capacity as my mockup charts show. I filtered the data to the
+                individuals that did not smoke because there were more data points to observe. I also realised that I
+                preferred to have height and age on the x-axis and independent variables to the y-axis, lung capacity.
+            </p>
+
+            <p><a href="images/chart1_fullsize.png" target="_blank" rel="noopener noreferrer"><img
+                        src="images/chart1_fullsize.png" /></a></p>
+            <p><a href="images/chart2_fullsize.png" target="_blank" rel="noopener noreferrer"><img
+                        src="images/chart2_fullsize.png" /></a></p>
+
+
+            </p>
 
             <h1>rationale of design choices</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                id est laborum.</p>
+            <p>After deciding that these were the attributes I wished to explore in my visualization, I began to parse
+                the data in D3.js and construct my charts. A scatterplot seemed like the most suitable chart type for
+                this dataset since each individual point contains information about an individual's height/age and lung
+                closing capacity. </p>
+
+            <p>The axes were originally both from 0 to the upper level of lung capacity and height/age, but this left
+                too much empty space on the left and bottom parts of the chart. For this reason, I trimmed the range of
+                both the x-axis and y-axis to dynamically include the min and max values of each attribute. </p>
+
+            <p>While my points were initally solid dots, I ended up leaning towards my mockup charts and creating rings
+                out of them; I felt that doing this allowed the viewer to better observe overlapping data points as they
+                did not completely obscure one another. </p>
+
+            <p>I wished to explore multiple attributes in the same chart and so I created buttons to toggle between
+                height and age so that the correlation between both attributes and lung closing capacity could be
+                observed. Animations were used to make the transitions smooth and appealing to look at, and I included a
+                subtle gradient to the data where a more reddish color is used for the lower end of the cc values and a
+                more purplish color is used for the higher end of the cc values. </p>
+
+            <p>Finally, I added tooltips to each of the data points so that the viewer might be able to mouseover a
+                point and see its exact values. I think this is important to have as an option, even though
+                visualizations are made to make data easily digestible at first glance. </p>
+
+            <h1>conclusions</h1>
+            <p>Based on the information in the dataset and the way it is portrayed in my visualzation, there appears to
+                be a strong correlation between height and lung closing capacity as well as age and lung closing
+                capacity. The taller or older an individual is, it is more likely that they have a greater closing
+                capacity than an individual that is shorter or younger than them. In other words, lung closing capacity
+                appears to increase with height and age. </p>
+
+            <p>I find myself curious to learn more about how lung capacity increases over the course of a person's life
+                and wonder how much difference is found after the childhood and adolescent stage of a person's life.
+                Because a 19 year old is nearly an adult and most people stop growing in height after their teenage
+                years, I wonder if there continues to be a linear growth in lung capacity due to age, or if there is a
+                point where the data begins to flatten out due to height. </p>
 
             <h1>video</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                id est laborum.</p>
+            <div class="videocontainer">
+                <iframe src="//www.youtube.com/embed/" frameborder="0" allowfullscreen class="video"></iframe>
+            </div>
         </div>
     </div>
 </body>

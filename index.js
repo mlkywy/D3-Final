@@ -15,7 +15,7 @@ const createChart = async () => {
   // labels
   const xAxisLabelHeight = "height (inches)";
   const xAxisLabelAge = "age (years)";
-  const yAxisLabel = "lung capacity (cc)";
+  const yAxisLabel = "lung closing capacity (cc)";
 
   // width and height
   const w = 1200;
